@@ -37,7 +37,7 @@ if (Meteor.isClient) {
             var story = event.target.story-text.value;
             var age = event.target.age.value;
             var language = event.target.lang_type.value;
-            var createDate = new Date();
+            var timeSince = new Date();
             var IpAddress = function () {
                 if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
                 else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -56,7 +56,7 @@ if (Meteor.isClient) {
                 ipAddress: ipAddress,
                 age: age,
                 language: language,
-                createDate: createDate,
+                timeSince: timeSince,
                 IpAddress: IpAddress,
                 face1value:0,
                 face2value:0,
