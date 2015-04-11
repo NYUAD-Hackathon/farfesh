@@ -3,7 +3,11 @@ if (Meteor.isClient) {
     // counter stars at 0
     Session.setDefault('counter', 0);
 
-    Template.hello.helpers({
+    Template.body.helpers({
+        stories: function () {
+            console.log(Stories.find({}));
+            return Stories.find({});
+        },
         counter: function () {
             return Session.get("counter");
         },
@@ -20,7 +24,7 @@ if (Meteor.isClient) {
                     face4++;
                 }
             }
-            
+
         }
     });
 
