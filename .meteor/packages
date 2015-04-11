@@ -9,3 +9,5 @@ autopublish
 insecure
 materialize:materialize
 iron:router
+http
+percolate:synced-cron
