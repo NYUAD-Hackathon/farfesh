@@ -4,6 +4,11 @@ Router.route('/', function () {
   this.render('main');
 });
 
+Router.route('/post', function () {
+  this.render('post');
+});
+
+
 if (Meteor.isClient) {
     Meteor.startup(function() {
        $('body').attr('align', 'right');
@@ -32,8 +37,32 @@ if (Meteor.isClient) {
     Template.main.events({
         'click .face': function(event){
             var face=event.target.value;
-        },
-        'submit newStory' : function(event) {
+        }
+    });
+    Template.story.events({
+        'click .face':function(event){
+            var value = $(event.target).attr("value");
+            if(value == "face1")
+            {
+                Stories.update(this._id,{$inc:{"face1value":1}});
+            }
+            else if(value == "face2")
+            {
+                Stories.update(this._id,{$inc:{"face2value":1}});
+            }
+            else if(value == "face3")
+            {
+                Stories.update(this._id,{$inc:{"face3value":1}});
+            }
+            else if(value == "face4")
+            {
+                Stories.update(this._id,{$inc:{"face4value":1}});
+            }
+        }
+    });
+
+    Template.post.events({
+        'click .submit' : function(event) {
             var story = event.target.story-text.value;
             var age = event.target.age.value;
             var language = event.target.lang_type.value;
@@ -66,28 +95,7 @@ if (Meteor.isClient) {
             });
             console.log(Stories.find({}, {sort: {createDate: -1}}));
         }
-    });
-    Template.story.events({
-        'click .face':function(event){
-            var value = $(event.target).attr("value");
-            if(value == "face1")
-            {
-                Stories.update(this._id,{$inc:{"face1value":1}});
-            }
-            else if(value == "face2")
-            {
-                Stories.update(this._id,{$inc:{"face2value":1}});
-            }
-            else if(value == "face3")
-            {
-                Stories.update(this._id,{$inc:{"face3value":1}});
-            }
-            else if(value == "face4")
-            {
-                Stories.update(this._id,{$inc:{"face4value":1}});
-            }
-        }
-    });
+    })
 }
 
     if (Meteor.isServer) {
