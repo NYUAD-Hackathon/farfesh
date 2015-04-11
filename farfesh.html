@@ -2,25 +2,25 @@
   <title>farfesh</title>
 </head>
 
-<body>
-  <h1>List of stories</h1>
+<template name="main">
+  <h1> أهلا وسهلا بموقعكم فرفش </h1>
+
+      <button> الاكثر مشاهده</button>
+      <button> القصص الحديثة</button>
 
   {{ #each stories }}
     {{> story}}
   {{ /each }}
-</body>
+</template>
 
 <template name="story">
 	<p>Content: {{text}}</p>
-    <p>Age: {{age}}</p>
-    {{ #each votes}}
-    	{{faceType}}
-    {{/each}}
-    <form>
-    	<input type="radio" class="face" name="face" value="face1">
-    	<input type="radio" class="face" name="face" value="face2">
-    	<input type="radio" class="face" name="face" value="face3">
-    	<input type="radio" class="face" name="face" value="face4">
-    </form>
-    <p>Votes: {{face1value}}, {{face2value}}, {{face3value}}, {{face4value}}</p>
+  <p>Age: {{age}}</p>
+  <form>
+    <img src="/images/smile.jpg" value="face1">
+    <img src="/images/laugh.jpg" value="face2">
+    <img src="/images/hearts.jpg" value="face3">
+    <img src="/images/sad.jpg" value="face4">
+  </form>
+  <p>Votes: {{face1value}}, {{face2value}}, {{face3value}}, {{face4value}}</p>
 </template>

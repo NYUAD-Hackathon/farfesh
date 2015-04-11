@@ -1,9 +1,15 @@
 Stories = new Mongo.Collection("Stories");
-if (Meteor.isClient) {
-    // counter stars at 0
-    Session.setDefault('counter', 0);
 
-    Template.body.helpers({
+Router.route('/', function () {
+  this.render('main');
+});
+
+if (Meteor.isClient) {
+    Meteor.startup(function() {
+       $('body').attr('align', 'right');
+    });
+
+    Template.main.helpers({
         stories: function () {
             console.log(Stories.find({}));
             return Stories.find({});
@@ -23,7 +29,7 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.body.events({
+    Template.main.events({
         'click .face': function(event){
             var face=event.target.value;
         },
