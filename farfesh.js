@@ -6,6 +6,21 @@ if (Meteor.isClient) {
     Template.hello.helpers({
         counter: function () {
             return Session.get("counter");
+        },
+        count_faces: function () {
+            var face1 = 0, face2 = 0, face3 = 0, face4 = 0;
+            for (var i; i < votes.length; i++) {
+                if (votes[i].faceType == "face1") {
+                    face1++;
+                } else if (votes[i].faceType == "face2") {
+                    face2++;
+                } else if (votes[i].faceType == "face3") {
+                    face3++;
+                } else if (votes[i].faceType == "face4") {
+                    face4++;
+                }
+            }
+            
         }
     });
 
@@ -19,20 +34,6 @@ if (Meteor.isClient) {
                 storyText: story,
                 votes: [{faceType: faceType}],
                 count_votes: votes.length,
-                count_faces: function () {
-                    var face1 = 0, face2 = 0, face3 = 0, face4 = 0;
-                    for (var i; i < votes.length; i++) {
-                        if (votes[i].faceType == "face1") {
-                            face1++;
-                        } else if (votes[i].faceType == "face2") {
-                            face2++;
-                        } else if (votes[i].faceType == "face3") {
-                            face3++;
-                        } else if (votes[i].faceType == "face4") {
-                            face4++;
-                        }
-                    }
-                },
                 create_date: new Date(),
                 ipAddress: function () {
                     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
