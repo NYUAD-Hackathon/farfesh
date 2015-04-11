@@ -1,7 +1,7 @@
 <template name="post">
-
+<form class="newStory">
 <div   align="right">
-<br> <textarea col="25" rows="5" placeholder=" اكتب قصتك لو سمحت "> اكتب قصتك لو سمحت
+<br> <textarea name="storyText" col="25" rows="5" placeholder=" اكتب قصتك لو سمحت "> اكتب قصتك لو سمحت
  </textarea>
 
  <br>
@@ -10,11 +10,13 @@
 
  <br>
 
- <div   align="right">
-    <textarea col="1" rows="1" placeholder="اكتب العمر رجاء " >  العمر رجاء
-   </textarea>
-   <textarea col="1" rows="1" label=" location" >  الموقع
-   </textarea>
+ <div align="right">
+    <input name="age" placeholder="اكتب العمر رجاء " >
+   <select name="languageType">
+       <option value="">اختر اللغة</option>
+       <option value="english">English</option>
+       <option value="arabic">العربية</option>
+   </select>
  </div>
 
 <br>
@@ -29,7 +31,7 @@ choose your language plz - اختر اللغة المفضلة رجاء
 </div> -->
 <br>
  <div align="right">
-   <input class="submit" type="submit" align="right" value="انشر قصتك" />
+   <input class="newStory" type="submit" align="right" value="انشر قصتك" />
  </div>
-
+</form>
 </template>

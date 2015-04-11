@@ -61,13 +61,18 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.post.rendered = function() {
+        $('select').material_select();
+    };
+
     Template.post.events({
-        'click .submit' : function(event) {
-            var story = event.target.story-text.value;
+        'submit .newStory' : function(event) {
+            event.preventDefault();
+            var story = event.target.storyText.value;
             var age = event.target.age.value;
-            var language = event.target.lang_type.value;
+            var language = event.target.languageType.value;
             var timeSince = new Date();
-            var IpAddress = function () {
+            var ipAddress = function () {
                 if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
                 else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                 xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
@@ -75,9 +80,9 @@ if (Meteor.isClient) {
 
                 hostipInfo = xmlhttp.responseText.split("\n");
 
-                for (i = 0; hostipInfo.length >= i; i++) {
-                    ipAddress = hostipInfo[i].split(":");
-                    if (ipAddress[0] == "IP") return ipAddress[1];
+                for (var i = 0; hostipInfo.length >= i; i++) {
+                    var ipAdd = hostipInfo[i].split(":");
+                    if (ipAdd[0] == "IP") return ipAddress[1];
                 }
             };
             Stories.insert({
@@ -86,14 +91,12 @@ if (Meteor.isClient) {
                 age: age,
                 language: language,
                 timeSince: timeSince,
-                IpAddress: IpAddress,
                 face1value:0,
                 face2value:0,
                 face3value:0,
-                face4value:0,
-                votes: [{}]
+                face4value:0
             });
-            console.log(Stories.find({}, {sort: {createDate: -1}}));
+           Router.go('/');
         }
     })
 }
