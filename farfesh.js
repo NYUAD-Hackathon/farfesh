@@ -33,68 +33,40 @@ if (Meteor.isClient) {
         'click .face': function(event){
             var face=event.target.value;
         },
-        'submit .new-story': function(event) {
-            var face1value = event.target.face1value;
-            var face2value = event.target.face2value;
-            var face3value = event.target.face3value;
-            var face4value = event.target.face4value;
+        'submit newStory' : function(event) {
             var story = event.target.story-text.value;
             var age = event.target.age.value;
-            var faceType = event.target.faceType.value;
             var language = event.target.lang_type.value;
+            var createDate = new Date();
+            var IpAddress = function () {
+                if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+                else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
+                xmlhttp.send();
+
+                hostipInfo = xmlhttp.responseText.split("\n");
+
+                for (i = 0; hostipInfo.length >= i; i++) {
+                    ipAddress = hostipInfo[i].split(":");
+                    if (ipAddress[0] == "IP") return ipAddress[1];
+                }
+            };
             Stories.insert({
+                storyText: story,
+                ipAddress: ipAddress,
+                age: age,
+                language: language,
+                createDate: createDate,
+                IpAddress: IpAddress,
                 face1value:0,
                 face2value:0,
                 face3value:0,
                 face4value:0,
-                storyText: story,
-                votes: [{faceType: faceType}],
-                count_votes: votes.length,
-                create_date: new Date(),
-                ipAddress: function () {
-                    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-                    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
-                    xmlhttp.send();
-
-                    hostipInfo = xmlhttp.responseText.split("\n");
-
-                    for (i = 0; hostipInfo.length >= i; i++) {
-                        ipAddress = hostipInfo[i].split(":");
-                        if (ipAddress[0] == "IP") return ipAddress[1];
-                    }
-                },
-                age: age,
-                language: language,
-                timeSince: function () {
-                    var seconds = Math.floor((new Date() - create_date) / 1000);
-                    var interval = Math.floor(seconds / 31536000);
-                    if (interval > 1) {
-                         return interval + " years";
-                    }
-                    interval = Math.floor(seconds / 2592000);
-                    if (interval > 1) {
-                        return interval + " months";
-                    }
-                    interval = Math.floor(seconds / 86400);
-                    if (interval > 1) {
-                        return interval + " days";
-                    }
-                    interval = Math.floor(seconds / 3600);
-                    if (interval > 1) {
-                        return interval + " hours";
-                    }
-                    interval = Math.floor(seconds / 60);
-                    if (interval > 1) {
-                        return interval + " minutes";
-                    }
-                    return Math.floor(seconds) + " seconds";
-                },
-                timesince: timeSince()
+                votes: [{}]
             });
-        },
+            console.log(Stories.find({}, {sort: {createDate: -1}}));
+        }
     });
-
     Template.story.events({
         'click .face':function(event){
             var value = $(event.target).attr("value");
