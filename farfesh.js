@@ -13,8 +13,8 @@ if (Meteor.isClient) {
         stories: function () {
             console.log(Stories.find({}));
             return Stories.find({});
-        },
-        count_faces: function () {
+        }
+        /*count_faces: function () {
             for (var i; i < votes.length; i++) {
                 if (votes[i].faceType == "face1value") {
                     face1value++;
@@ -26,7 +26,7 @@ if (Meteor.isClient) {
                     face4value++;
                 }
             }
-        }
+        },*/
     });
 
     Template.main.events({
@@ -65,7 +65,32 @@ if (Meteor.isClient) {
                     }
                 },
                 age: age,
-                language: language
+                language: language,
+                timeSince: function () {
+                    var seconds = Math.floor((new Date() - create_date) / 1000);
+                    var interval = Math.floor(seconds / 31536000);
+                    if (interval > 1) {
+                         return interval + " years";
+                    }
+                    interval = Math.floor(seconds / 2592000);
+                    if (interval > 1) {
+                        return interval + " months";
+                    }
+                    interval = Math.floor(seconds / 86400);
+                    if (interval > 1) {
+                        return interval + " days";
+                    }
+                    interval = Math.floor(seconds / 3600);
+                    if (interval > 1) {
+                        return interval + " hours";
+                    }
+                    interval = Math.floor(seconds / 60);
+                    if (interval > 1) {
+                        return interval + " minutes";
+                    }
+                    return Math.floor(seconds) + " seconds";
+                },
+                timesince: timeSince()
             });
         },
     });
