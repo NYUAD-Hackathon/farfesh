@@ -72,20 +72,20 @@ if (Meteor.isClient) {
 
     Template.story.events({
         'click .face':function(event){
-            Stories.update(this._id,{$push: {votes: {faceType: event.target.value}}})
-            if(event.target.value=="face1")
+            var value = $(event.target).attr("value");
+            if(value == "face1")
             {
                 Stories.update(this._id,{$inc:{"face1value":1}});
             }
-            else if(event.target.value=="face2")
+            else if(value == "face2")
             {
                 Stories.update(this._id,{$inc:{"face2value":1}});
             }
-            else if(event.target.value=="face3")
+            else if(value == "face3")
             {
                 Stories.update(this._id,{$inc:{"face3value":1}});
             }
-            else if(event.target.value=="face4")
+            else if(value == "face4")
             {
                 Stories.update(this._id,{$inc:{"face4value":1}});
             }
