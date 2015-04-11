@@ -9,16 +9,15 @@ if (Meteor.isClient) {
             return Stories.find({});
         },
         count_faces: function () {
-            var face1 = 0, face2 = 0, face3 = 0, face4 = 0;
             for (var i; i < votes.length; i++) {
-                if (votes[i].faceType == "face1") {
-                    face1++;
-                } else if (votes[i].faceType == "face2") {
-                    face2++;
-                } else if (votes[i].faceType == "face3") {
-                    face3++;
-                } else if (votes[i].faceType == "face4") {
-                    face4++;
+                if (votes[i].faceType == "face1value") {
+                    face1value++;
+                } else if (votes[i].faceType == "face2value") {
+                    face2value++;
+                } else if (votes[i].faceType == "face3value") {
+                    face3value++;
+                } else if (votes[i].faceType == "face4value") {
+                    face4value++;
                 }
             }
         }
@@ -27,16 +26,21 @@ if (Meteor.isClient) {
     Template.body.events({
         'click .face': function(event){
             var face=event.target.value;
-            Stories.insert({
-
-            });
         },
         'submit .new-story': function(event) {
+            var face1value = event.target.face1value;
+            var face2value = event.target.face2value;
+            var face3value = event.target.face3value;
+            var face4value = event.target.face4value;
             var story = event.target.story-text.value;
             var age = event.target.age.value;
             var faceType = event.target.faceType.value;
             var language = event.target.lang_type.value;
             Stories.insert({
+                face1value:0,
+                face2value:0,
+                face3value:0,
+                face4value:0,
                 storyText: story,
                 votes: [{faceType: faceType}],
                 count_votes: votes.length,
@@ -63,6 +67,22 @@ if (Meteor.isClient) {
     Template.story.events({
         'click .face':function(event){
             Stories.update(this._id,{$push: {votes: {faceType: event.target.value}}})
+            if(event.target.value=="face1")
+            {
+                Stories.update(this._id,{$inc:{"face1value":1}});
+            }
+            else if(event.target.value=="face2")
+            {
+                Stories.update(this._id,{$inc:{"face2value":1}});
+            }
+            else if(event.target.value=="face3")
+            {
+                Stories.update(this._id,{$inc:{"face3value":1}});
+            }
+            else if(event.target.value=="face4")
+            {
+                Stories.update(this._id,{$inc:{"face4value":1}});
+            }
         }
     });
 }
