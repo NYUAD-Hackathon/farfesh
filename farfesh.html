@@ -6,7 +6,20 @@
   <h1>List of stories</h1>
 
   {{ #each stories }}
-    <p>Content: {{text}}</p>
-    <p>Age: {{age}}</p>
+    {{> story}}
   {{ /each }}
 </body>
+
+<template name="story">
+	<p>Content: {{text}}</p>
+    <p>Age: {{age}}</p>
+    {{ #each votes}}
+    	{{faceType}}
+    {{/each}}
+    <form>
+    	<input type="radio" class="face" name="face" value="face1">
+    	<input type="radio" class="face" name="face" value="face2">
+    	<input type="radio" class="face" name="face" value="face3">
+    	<input type="radio" class="face" name="face" value="face4">
+    </form>
+</template>

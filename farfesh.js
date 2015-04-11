@@ -8,9 +8,6 @@ if (Meteor.isClient) {
             console.log(Stories.find({}));
             return Stories.find({});
         },
-        counter: function () {
-            return Session.get("counter");
-        },
         count_faces: function () {
             var face1 = 0, face2 = 0, face3 = 0, face4 = 0;
             for (var i; i < votes.length; i++) {
@@ -24,11 +21,16 @@ if (Meteor.isClient) {
                     face4++;
                 }
             }
-
         }
     });
 
-    Template.hello.events({
+    Template.body.events({
+        'click .face': function(event){
+            var face=event.target.value;
+            Stories.insert({
+
+            });
+        },
         'submit .new-story': function(event) {
             var story = event.target.story-text.value;
             var age = event.target.age.value;
@@ -56,12 +58,15 @@ if (Meteor.isClient) {
                 language: language
             });
         },
-        'click button': function () {
-            // increment the counter when button is clicked
-            Session.set("counter", Session.get("counter") + 1);
+    });
+
+    Template.story.events({
+        'click .face':function(event){
+            Stories.update(this._id,{$push: {votes: {faceType: event.target.value}}})
         }
     });
 }
+
     if (Meteor.isServer) {
         Meteor.startup(function () {
             // code to run on server at startup
