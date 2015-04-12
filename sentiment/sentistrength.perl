@@ -23,7 +23,10 @@ while (my $line = <STDIN>) {
 	
 	my $sentiment = GetSentiment($tmpFile);
 	print STDERR "sentiment=$sentiment \n";
-	print "$sentiment\n";
+	
+	if ($sentiment > 1) {
+  	print "$line\n";
+  }
 }
 
 ########################################
