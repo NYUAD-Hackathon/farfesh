@@ -16,8 +16,7 @@ if (Meteor.isClient) {
 
     Template.main.helpers({
         stories: function () {
-            console.log(Stories.find({}));
-            return Stories.find({});
+            return Stories.find({}, {sort: {createdAt: -1}});
         }
         /*count_faces: function () {
             for (var i; i < votes.length; i++) {
@@ -98,7 +97,8 @@ if (Meteor.isClient) {
                 ipAddress: ipAddress,
                 age: age,
                 language: language,
-                timeSince: timeSince,
+                createdAt: new Date(),
+                country: "UAE",
                 face1value:0,
                 face2value:0,
                 face3value:0,

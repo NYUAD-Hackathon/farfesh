@@ -7,6 +7,7 @@ blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
+copleykj:livestamp@1.1.6
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
@@ -36,6 +37,7 @@ meteor-platform@1.2.2
 minifiers@1.1.4
 minimongo@1.0.7
 mobile-status-bar@1.0.3
+momentjs:moment@2.9.0
 mongo@1.1.0
 observe-sequence@1.0.5
 ordered-dict@1.0.3
