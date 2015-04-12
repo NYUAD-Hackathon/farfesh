@@ -6,7 +6,7 @@ Meteor.startup(function() {});
 SyncedCron.add({
   name: 'Update tweets',
   schedule: function(parser) {
-    return parser.text('every 10 seconds');
+    return parser.text('every 1 minute');
   },
   job: function() {
     Meteor.http.get("http://cheermeapp.cloudapp.net/tweetDir/en.tweets", function (err, res) {
