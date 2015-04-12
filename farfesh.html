@@ -2,30 +2,24 @@
   <title>farfesh</title>
   <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" >
-        $(document).ready(function() {
-            $('.button-collapse').sideNav({
-                        menuWidth: 300, // Default is 240
-                        edge: 'right', // Choose the horizontal origin
-                        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                    }
-            );
-        });
+
     </script>
 </head>
 
 <template name="main">
-    <div>
-        <div class="nav">
-            <ul id="slide-out" class="side-nav fixed">
-                <li><a href="#!">First Sidebar Link</a></li>
-                <li><a href="#!">Second Sidebar Link</a></li>
-            </ul>
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        </div>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/main" class="brand-logo center">فرفش</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/post"><i class="mdi-content-create"></i></a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
    <div class="container">
 	<div class="row">
-      <div class="mainContent col s12 offset-m4 m8">
+      <div class="mainContent col s12 offset-m2 m8">
         <!-- Teal page content  -->
 		<div class="wrapper">
 		{{ #each stories }}
@@ -38,49 +32,52 @@
 </template>
 
 <template name="story">
-  <div class="row storyBlock">
-			<div class="col s12">
-			  <div class="card grey lighten-5">
-				<div class="card-content">
-				  <div class="storyText">{{storyText}}</div>
-				</div>
-				<div class="age">
-					<i>Age: {{age}} </i>
-				</div>
-				<div class="card-action">
-					<form>
-                        <div class="row">
-                            <div class="col s3">
-                                <div class="row left">
-                                    <div class="smileys">
-                                        <div class="col s3 faceBlock">
-                                            <div class="face1 face" value="face1"></div>
-                                            <span class="voteNumber">{{face1value}}</span>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="face2 face" value="face2"></div>
-                                            <span class="voteNumber">{{face2value}}</span>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="face3 face" value="face3"></div>
-                                            <span class="voteNumber">{{face3value}}</span>
-                                        </div>
-                                        <div class="col s3">
-                                            <div class="face4 face" value="face4"></div>
-                                            <span class="voteNumber">{{face4value}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-					</form>
-                    <div class="clearfix"></div>
-                    <div class="cardInfo">
-                        <i>Posted at: {{timeSince}} from {{country}}</i>
-                    </div>
-				</div>
-			  </div>
-			</div>					
-		</div><!-- /. row --> 
+  <div class="row">
+      <div class="storyBlock">
+          <div class="col s12">
+              <div class="card grey lighten-5">
+                  <div class="card-content">
+                      <div class="storyText">{{storyText}}</div>
+                      <div class="age">
+                          <i>Age: {{age}} </i>
+                      </div>
+                  </div>
+
+                  <div class="card-action">
+                      <form>
+                          <div class="row">
+                              <div class="col s3">
+                                  <div class="row left">
+                                      <div class="smileys">
+                                          <div class="col s3 faceBlock">
+                                              <div class="face1 face" value="face1"></div>
+                                              <span class="voteNumber">{{face1value}}</span>
+                                          </div>
+                                          <div class="col s3">
+                                              <div class="face2 face" value="face2"></div>
+                                              <span class="voteNumber">{{face2value}}</span>
+                                          </div>
+                                          <div class="col s3">
+                                              <div class="face3 face" value="face3"></div>
+                                              <span class="voteNumber">{{face3value}}</span>
+                                          </div>
+                                          <div class="col s3">
+                                              <div class="face4 face" value="face4"></div>
+                                              <span class="voteNumber">{{face4value}}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                      <div class="clearfix"></div>
+                      <div class="cardInfo">
+                          <i>Posted at: {{timeSince}} from {{country}}</i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- /. row -->
 </template>
 
