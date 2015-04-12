@@ -25,10 +25,10 @@
 		{{ #each stories }}
 			{{> story}}
 		{{ /each }}
-		</div> <!-- /. wrapper--> 
+		</div> <!-- /. wrapper-->
       </div><!-- /. maincontent  -->
-	</div><!--/.row -->    
-</div>  <!-- /. container --> 	
+	</div><!--/.row -->
+</div>  <!-- /. container -->
 </template>
 
 <template name="story">
@@ -37,6 +37,9 @@
           <div class="col s12">
               <div class="card grey lighten-5">
                   <div class="card-content">
+                      {{#if tweet}}
+                      <img class="twitter" src="/images/twitter.png" />
+                      {{/if}}
                       <div class="storyText">{{storyText}}</div>
                       <div class="age">
                           <i>Age: {{age}} </i>
