@@ -80,7 +80,7 @@
 }
 .storyBlock {
     display: block;
-    padding: 0;
+    padding: 12px 10px;
 }
 
 .cardInfo {
@@ -105,6 +105,10 @@
 
 .card-action .row {
     margin-bottom: 0;
+}
+
+nav {
+    background-color: #FF9800;
 }
 
 img.twitter {

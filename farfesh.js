@@ -65,6 +65,14 @@ if (Meteor.isClient) {
         $('select').material_select();
     };
 
+    Template.main.rendered = function() {
+        $('.button-collapse').sideNav({
+                menuWidth: 400, // Default is 240
+                edge: 'left', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+    };
     Template.post.events({
         'submit .newStory' : function(event) {
             event.preventDefault();
