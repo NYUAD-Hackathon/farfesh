@@ -114,3 +114,14 @@ nav {
 img.twitter {
     width: 30px;
 }
+
+.cardInfo {
+    color: #ECECEC;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.age {
+    color: #e65100;
+    font-size: 12px;
+}
