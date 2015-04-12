@@ -21,7 +21,8 @@
 }
 
 .smileys {
-    width: 20%;
+    margin: 10px;
+    margin-left:20px;
 }
 .faceBlock {
     padding: 2px ;
@@ -30,17 +31,53 @@
 .face {
     width: 30px;
     height: 30px;
-    background-color: #ff9800;
+    cursor: pointer;
+}
+.face1 {
+    background:url("/images/grin.png") center no-repeat;
+    background-size: cover;
 }
 
-.face1 {
-    background:url("public/images/grin.png") center no-repeat ;
+.face1:hover {
+    background: url("/images/grin2.png") center no-repeat;
+    background-size: cover;
 }
+
+.face2 {
+    background:url("/images/shocked.png") center no-repeat;
+    background-size: cover;
+}
+.face2:hover {
+    background: url("/images/shocked2.png") center no-repeat;
+    background-size: cover;
+}
+
+.face3 {
+    background:url("/images/smile.png") center no-repeat;
+    background-size: cover;
+}
+.face3:hover {
+    background: url("/images/smile2.png") center no-repeat;
+    background-size: cover;
+}
+.face4 {
+    background:url("/images/tongue.png") center no-repeat;
+    background-size: cover;
+}
+.face4:hover {
+    background: url("/images/tongue2.png") center no-repeat ;
+    background-size: cover;
+}
+
+
 .card {
     margin-bottom: 0;
     border-radius: 0;
 }
 
+.card .card-action {
+    padding: 0;
+}
 .storyBlock {
     display: block;
     padding: 0;
@@ -53,5 +90,20 @@
     padding: 5px;
     margin-top: 0;
     background-color: #ff9800;
+}
+
+.voteNumber {
+    display: block;
+    text-align: center;
+    color: #78909c;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #ffffff;
+    border-radius: 2px;
+    margin: 4px;
+}
+
+.card-action .row {
+    margin-bottom: 0;
 }
 
