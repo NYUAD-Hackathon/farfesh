@@ -1,52 +1,57 @@
 /* CSS declarations go here */
-
-img.face {
-  width: 50px;
-  height: 50px;
-}
-
-.story {
-  border: solid thin #ddd;
-  margin: 10px;
-  padding: 10px;
-}
-
-/* CSS declarations go here */
-html, body {
-	height:100%;
-	width:100%;
-	text-align: right !important;
-	direction: rtl;
-	font-family: Tahoma, Arial, Sans-Serif; 
-	color: #333; 
-	background-color: #fefefe; 
-	font-size: 14px; 
-	padding: 0;
-	margin: 0;
-}
-
 .container {
-	width: 100%;
-	
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: inherit;
+    height:100%;
+    text-align: right !important;
+    direction: rtl;
+    font-family: tahoma, Arial, Sans-Serif;
+    color: #333;
+    background-color: #fefefe;
+    font-size: 14px;
+    box-sizing: border-box;
+
 }
 
-.sideNav {
-	background-color: #E98023;
-	color: #fefefe;
-	font-family: arial, sans-serif;
-	font-size: 18px;
+.storyText {
+    font-size: 18px;
+    color: #333333;
 }
 
-.logo, .logoTitle {
-	display:block;
-	margin: 0 auto;
-	width: 50%;
-	margin-top: 10px;
+.smileys {
+    width: 20%;
+}
+.faceBlock {
+    padding: 2px ;
+    margin: 0;
+}
+.face {
+    width: 30px;
+    height: 30px;
+    background-color: #ff9800;
 }
 
-nav {
-	background-color: none;
-	display:block;
-	box-sizing: border-box;
-	padding:10px;
+.face1 {
+    background:url("public/images/grin.png") center no-repeat ;
 }
+.card {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.storyBlock {
+    display: block;
+    padding: 0;
+}
+
+.cardInfo {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 0;
+    background-color: #ff9800;
+}
+

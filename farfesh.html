@@ -1,46 +1,36 @@
 <head>
   <title>farfesh</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $('.button-collapse').sideNav({
+                        menuWidth: 300, // Default is 240
+                        edge: 'right', // Choose the horizontal origin
+                        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    }
+            );
+        });
+    </script>
 </head>
 
 <template name="main">
+    <div>
+        <div class="nav">
+            <ul id="slide-out" class="side-nav fixed">
+                <li><a href="#!">First Sidebar Link</a></li>
+                <li><a href="#!">Second Sidebar Link</a></li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </div>
    <div class="container">
 	<div class="row">
-        <div class="sideNav col s12 m4" > 
-        <!-- Grey navigation panel -->
-			<div class="row">
-				<div class="logo col s12" > 
-					<h1 class="logoTitle" >FarFesh</h1>
-				</div>
-			</div> <!-- row -->
-			<div class="row"> 
-				<!-- navigation --> 
-				<nav class="blue-grey">
-				<div class="nav-wrapper">
-				  <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-				  <ul class="desktopNav">
-					<li>الأكثر مشاهدة</li>
-					<li>القصص الحديثة</li>
-					<li>تغريدات مفرحة</li>
-					<li>إعدادات</li>
-				  </ul>
-				  <ul class="side-nav" id="mobile">
-					<li>الأكثر مشاهدة</li>
-					<li>القصص الحديثة</li>
-					<li>تغريدات مفرحة</li>
-					<li>إعدادات</li>
-				  </ul>
-				</div>
-			  </nav>
-			</div> <!-- row --> 
-      </div> <!-- sideNav --> 
-      <div class="mainContent col s12 m8"> 
+      <div class="mainContent col s12 offset-m4 m8">
         <!-- Teal page content  -->
 		<div class="wrapper">
 		{{ #each stories }}
 			{{> story}}
 		{{ /each }}
-	
 		</div> <!-- /. wrapper--> 
       </div><!-- /. maincontent  -->
 	</div><!--/.row -->    
@@ -50,24 +40,41 @@
 <template name="story">
   <div class="row storyBlock">
 			<div class="col s12">
-			  <div class="card blue-grey darken-1">
-				<div class="card-content white-text">
-				  <p>{{storyText}} </p>
+			  <div class="card grey lighten-5">
+				<div class="card-content">
+				  <div class="storyText">{{storyText}}</div>
 				</div>
-				<div class="cardInfo ">
+				<div class="age">
 					<i>Age: {{age}} </i>
-					<i>Posted at: {{timeSince}} from {{country}}</i>
 				</div>
 				<div class="card-action">
 					<form>
-					  <img class="face" src="/images/smile.jpg" value="face1">
-					  <img class="face" src="/images/laugh.jpg" value="face2">
-					  <img class="face" src="/images/hearts.jpg" value="face3">
-					  <img class="face" src="/images/sad.jpg" value="face4">
+                        <div class="smileys row left">
+                            <div class="col s3 faceBlock">
+                                <div class="face1 face" value="face1"></div>
+                                <span class="voteNumber">{{face1value}}</span>
+                            </div>
+                            <div class="col s3">
+                                <div class="face2 face" value="face2"></div>
+                                <span class="voteNumber">{{face2value}}</span>
+                            </div>
+                            <div class="col s3">
+                                <div class="face3 face" value="face3"></div>
+                                <span class="voteNumber">{{face3value}}</span>
+                            </div>
+                            <div class="col s3">
+                                <div class="face4 face" value="face4"></div>
+                                <span class="voteNumber">{{face4value}}</span>
+                            </div>
+                        </div>
 					</form>
-				  <p>Votes: {{face1value}}, {{face2value}}, {{face3value}}, {{face4value}}</p>
+                    <div class="clearfix"></div>
+                    <div class="cardInfo">
+                        <i>Posted at: {{timeSince}} from {{country}}</i>
+                    </div>
 				</div>
 			  </div>
 			</div>					
 		</div><!-- /. row --> 
 </template>
+
