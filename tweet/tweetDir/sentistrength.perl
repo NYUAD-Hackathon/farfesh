@@ -3,6 +3,8 @@
 use strict;
 use URI::Escape;
 
+my $language = $ARGV[0];
+
 binmode(STDIN, ":utf8");
 
 while (my $line = <STDIN>) {
@@ -16,7 +18,7 @@ while (my $line = <STDIN>) {
 	$cmd .= "\"http://sentistrength.wlv.ac.uk/results.php?text=";
 	my $safe = uri_escape_utf8($line);
 	$cmd .= $safe;	
-	$cmd .= "&submit=Detect+Sentiment+in+Arabic\"";
+	$cmd .= "&submit=Detect+Sentiment+in+" .$language ."\"";
 	
 	print STDERR "cmd=$cmd\n";
 	`$cmd`;
