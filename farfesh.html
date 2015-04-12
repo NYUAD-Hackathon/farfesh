@@ -41,9 +41,11 @@
                       <img class="twitter" src="/images/twitter.png" />
                       {{/if}}
                       <div class="storyText">{{storyText}}</div>
-                      <div class="age">
-                          <strong style="font-weight: bold">Age:</strong> {{age}}
-                      </div>
+                      {{#unless tweet}}
+                        <div class="age">
+                            <strong style="font-weight: bold">Age:</strong> {{age}}
+                        </div>
+                      {{/unless}}
                   </div>
 
                   <div class="card-action">
